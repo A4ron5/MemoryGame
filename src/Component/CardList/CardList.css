@@ -1,0 +1,10 @@
+.deck{
+    position: relative;
+}
+
+.deck .kek {
+    position: absolute;
+    z-index: 100;
+    top: -50px;
+    right: 150px;
+}

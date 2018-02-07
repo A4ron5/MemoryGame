@@ -1,0 +1,5 @@
+export const CLICK = 'CLICK'
+export const SELECT = 'SELECT'
+export const COMPARE = 'COMPARE'
+export const INCREMENT_COUNT = 'INCREMENT_COUNT'
+export const DECREMENT_COUNT = 'DECREMENT_COUNT'

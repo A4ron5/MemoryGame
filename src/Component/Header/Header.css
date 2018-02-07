@@ -1,0 +1,9 @@
+.gamepage-header{
+    margin-top: 55px;
+    margin-bottom: 30px;
+    display: flex;
+    opacity: 0.9;
+}
+.gamepage-header .restart {
+    cursor: pointer;
+}
