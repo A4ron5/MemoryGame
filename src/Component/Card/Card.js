@@ -5,7 +5,7 @@ import './Card.css'
 
 class Card extends React.Component {
   state = {
-    isOpen: this.props.isOpenAll
+    isOpen: this.props.isOpen
   }
 
   flip = () => {
@@ -16,7 +16,7 @@ class Card extends React.Component {
   
   componentWillReceiveProps(nextProps){
     if(nextProps.isOpenAll !== this.state.isOpen){
-      this.setState({isOpen: nextProps.isOpenAll})
+      this.setState({isOpen: nextProps.isOpen})
     }
   }
 

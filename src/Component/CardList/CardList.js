@@ -5,7 +5,7 @@ import './CardList.css'
 class CardList extends React.Component {
   
   state = {
-    isOpenAll: this.props.isOpenAll
+    isOpen: this.props.isOpen
   }
 
   //TODO: ПЕРЕДАЛТЬ ВСЕЕЕЕЕЕЕЕ
@@ -34,7 +34,7 @@ class CardList extends React.Component {
           name={name}
           image={item.image}
           position={item.id}
-          isOpenAll={this.state.isOpenAll}
+          isOpen={this.state.isOpen}
         />
       );
     });
