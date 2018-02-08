@@ -26,6 +26,7 @@ class App extends Component {
   state = {
     gameDeck: new Initializator().getDeck(),
     count: 0,
+    isOpenAll: false
   };
 
 
@@ -33,14 +34,14 @@ class App extends Component {
     let cards = new Initializator();
     this.setState({
       gameDeck: cards.getDeck(),
-      count: 0
+      count: 0,
+      isOpenAll: false
     });
   }
   
   selectedCards = [];
   openedCards = 0;
   cardsInGame = [];
-  test = false;
 
   select = e => {
     if (e.target.parentNode.parentNode) {
@@ -66,7 +67,6 @@ class App extends Component {
           },800)
           break;
         case firstCard.id !== secondCard.id:
-          this.test = true;
           setTimeout(() => {
             this.lose();
           },800)
@@ -119,6 +119,10 @@ class App extends Component {
     this.compare(ev);
   };
 
+  onDeckClcikWrapper = (ev) => {
+    setTimeout(this.onDeckClick(ev), 1000)
+  }
+
   render() {
     return (
       <div className="App">
@@ -131,8 +135,8 @@ class App extends Component {
           <Header count={this.state.count} restart={this.restart}/>
           <CardList 
           gameDeck={this.state.gameDeck} 
-          onDeckClick={this.onDeckClick} 
-          test={this.test}
+          onDeckClick={this.onDeckClick}
+          isOpenAll={this.state.isOpenAll} 
           />
         </GamePage>
         {/* <EndPage>
