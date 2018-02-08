@@ -5,18 +5,18 @@ import './Card.css'
 
 class Card extends React.Component {
   state = {
-    isOpen: this.props.test
+    isOpen: this.props.isOpenAll
   }
 
   flip = () => {
     this.setState({
-      isOpen: !this.state.isOpen
+      isOpen: true
     });
   }
   
   componentWillReceiveProps(nextProps){
-    if(this.props.test == nextProps.test){
-      this.setState({ isOpen: !nextProps.test})
+    if(nextProps.isOpenAll !== this.state.isOpen){
+      this.setState({isOpen: nextProps.isOpenAll})
     }
   }
 

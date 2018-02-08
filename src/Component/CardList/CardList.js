@@ -5,7 +5,7 @@ import './CardList.css'
 class CardList extends React.Component {
   
   state = {
-    isOpen: this.props.test
+    isOpenAll: this.props.isOpenAll
   }
 
   //TODO: ПЕРЕДАЛТЬ ВСЕЕЕЕЕЕЕЕ
@@ -20,12 +20,6 @@ class CardList extends React.Component {
   
   componentDidMount(){
     this.node.addEventListener("click", this.props.onDeckClick);
-    // setTimeout(()=> {
-    //   this.setState({isOpen: !this.state.isOpen})
-    // },1000)
-    // setTimeout(()=> {
-    //   this.setState({isOpen: !this.state.isOpen})
-    // },5000)
   }
 
   render() {
@@ -40,7 +34,7 @@ class CardList extends React.Component {
           name={name}
           image={item.image}
           position={item.id}
-          test={this.state.isOpen}
+          isOpenAll={this.state.isOpenAll}
         />
       );
     });
