@@ -1,31 +1,25 @@
 import React from "react";
-import Card from "../Card/Card.js";
+import Card from "./Card/Card";
 import './CardList.css'
-//TODO: Разобраться с перевортом карт PS поменять классы в css
+import wrapHOC from '../HOC/GamePageHOC'
+
 class CardList extends React.Component {
   
   state = {
     isOpen: this.props.isOpen
-  }
-
-  //TODO: ПЕРЕДАЛТЬ ВСЕЕЕЕЕЕЕЕ
-
-  
+  };
 
   handleDeck = node => {
     this.node = node;
   };
   
-  
-  
   componentDidMount(){
-    this.node.addEventListener("click", this.props.onDeckClick);
+    this.node.addEventListener("click", this.props.onClick);
   }
 
   render() {
-    
-    const deck = this.props.gameDeck;
-    const items = deck.map((item, index) => {
+    const gamedeck = this.props.deck;
+    const items = gamedeck.map((item, index) => {
       let name = `${item.rank}${item.suit}`;
       return (
         <Card
@@ -46,4 +40,4 @@ class CardList extends React.Component {
   }
 }
 
-export default CardList;
+export default wrapHOC(CardList);
