@@ -1,6 +1,7 @@
 import React from 'react'
 import Header from '../Component/Header/Header'
 import Initializator from '../Initialization/index'
+import {Redirect} from 'react-router-dom'
 
 const wrapHOC = (CardList) => {
   class Wrapper extends React.PureComponent {
@@ -98,6 +99,9 @@ const wrapHOC = (CardList) => {
 		};
 
     render() {
+	  if(this.state.deck.length === 0) {
+		  return <Redirect push to='/end'/>
+	  }
       return (
         <div>
           <Header count={this.state.count} restart={this.restart}/>

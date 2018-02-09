@@ -3,6 +3,8 @@
     margin-bottom: 30px;
     display: flex;
     opacity: 0.9;
+    font-size: 28px;
+    color: #fff;
 }
 .gamepage-header .restart {
     cursor: pointer;
