@@ -40,12 +40,12 @@ const wrapHOC = (CardList) => {
 				let secondCard = this.selectedCards[1];
 				switch (true) {
 					case firstCard.name === secondCard.name && firstCard.id !== secondCard.id:
-						this.cardFilter();
+            this.cardFilter();
 						setTimeout(() => {
 							this.win();
 						},800)
 						break;
-					case firstCard.id !== secondCard.id:
+          case firstCard.id !== secondCard.id:
 						setTimeout(() => {
 							this.lose();
 						},800)
@@ -55,7 +55,7 @@ const wrapHOC = (CardList) => {
 				}
 			}
 		};
-		
+
 		cardFilter = () => {
 			this.cardsInGame = this.state.deck.filter(item => {
 				let cardName = `${item.rank}${item.suit}`;
@@ -74,7 +74,7 @@ const wrapHOC = (CardList) => {
 						count: this.state.count + countPlus, 
 						deck: this.cardsInGame
 					})
-				}, 800)
+        }, 800)
 			this.clear();
 		};
 
@@ -85,7 +85,11 @@ const wrapHOC = (CardList) => {
 				setTimeout(() => {
 					this.setState({ count: countMinus })
 				}, 800);
-			}
+			} else {
+				setTimeout(() => {
+					this.forceUpdate();
+				}, 800)
+      }
 			this.clear();
 		};
 
