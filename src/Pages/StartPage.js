@@ -11,7 +11,7 @@ const StartPage = (props) => {
     <div className='start-page container'>
       <Logo img={StartGameLogo}/>
       <TextLine>MEMORY GAME</TextLine>
-      <Link to='/game'>
+      <Link to='/game' style={{textDecoration: 'none'}}>
         <Button>Начать игру</Button>
       </Link>
     </div>

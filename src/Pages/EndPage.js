@@ -13,7 +13,7 @@ const EndPage = (props) => {
         <Logo img={EndGameLogo}/>
         <TextLine>Поздавляём!</TextLine>
         <Count>Ваш итоговый счет:</Count>
-        <Link to='/game'>
+        <Link to='/game' style={{textDecoration: 'none'}}>
           <Button>Еще раз</Button>
         </Link>
       </div>
