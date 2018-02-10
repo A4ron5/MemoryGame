@@ -1,9 +1,9 @@
 body {
   background-color: #1C7430;
+  color: #fff;
+  font-size: 26px;
 }
 .App{
-  font-size: 26px;
-  color: #fff;
   font-family: 'Open Sans';
   font-weight: bold;
 }
