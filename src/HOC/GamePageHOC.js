@@ -26,10 +26,10 @@ const wrapHOC = (CardList) => {
 		}
 
 		select = e => {
-			if (e.target.parentNode.parentNode) {
+			if (e.target.parentElement.parentElement) {
 				this.selectedCards.push({
-					name: e.target.parentNode.parentNode.getAttribute("data-name"),
-					id: e.target.parentNode.parentNode.getAttribute("data-id")
+					name: e.target.parentElement.parentElement.getAttribute("data-name"),
+					id: e.target.parentElement.parentElement.getAttribute("data-id")
 				});
 			}
 		};
