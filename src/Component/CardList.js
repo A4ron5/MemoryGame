@@ -29,6 +29,7 @@ class CardList extends React.Component {
           image={item.image}
           position={item.id}
           isOpen={this.state.isOpen}
+          flag={this.props.flag}
         />
       );
     });

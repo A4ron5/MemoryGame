@@ -9,9 +9,11 @@ class Card extends React.Component {
   }
 
   flip = () => {
-    this.setState({
-      isOpen: true
-    });
+    if(this.props.flag){
+      this.setState({
+        isOpen: true
+      });
+    }
   }
   
   componentWillReceiveProps(nextProps){

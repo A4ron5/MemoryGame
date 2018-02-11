@@ -15,37 +15,49 @@ const wrapHOC = (CardList) => {
 		selectedCards = [];
 		openedCards = 0;
 		cardsInGame = [];
-		
+    flag = true;
+    
 		restart = () => {
-			let cards = new Initializator();
 			this.setState({
-				deck: cards.getDeck(),
+				deck: new Initializator().getDeck(),
 				count: 0,
 				isOpen: false
 			});
 		}
 
 		select = e => {
-			if (e.target.parentElement.parentElement) {
-				this.selectedCards.push({
-					name: e.target.parentElement.parentElement.getAttribute("data-name"),
-					id: e.target.parentElement.parentElement.getAttribute("data-id")
-				});
-			}
+      if(this.flag){
+        if (e.target.parentElement.parentElement) {
+          this.selectedCards.push({
+            name: e.target.parentElement.parentElement.getAttribute("data-name"),
+            id: e.target.parentElement.parentElement.getAttribute("data-id")
+          });
+        }
+      }
 		};
 
+    selectFlag = () => {
+      this.flag = false;
+      setTimeout(() => {
+        this.flag = true;
+      }, 800)
+    }
+    
 		compare = e => {
 			if (this.selectedCards.length === 2) {
+        this.selectFlag();
 				let firstCard = this.selectedCards[0];
-				let secondCard = this.selectedCards[1];
+        let secondCard = this.selectedCards[1];
+        let winRound = firstCard.name === secondCard.name && firstCard.id !== secondCard.id;
+        let loseRound = firstCard.name !== secondCard.name;
 				switch (true) {
-					case firstCard.name === secondCard.name && firstCard.id !== secondCard.id:
+					case winRound:
             this.cardFilter();
 						setTimeout(() => {
 							this.win();
 						},800)
 						break;
-          case firstCard.id !== secondCard.id:
+          case loseRound:
 						setTimeout(() => {
 							this.lose();
 						},800)
@@ -96,20 +108,22 @@ const wrapHOC = (CardList) => {
 		clear = () => {
 			this.selectedCards = [];
 		}
-
-		onDeckClick = ev => {
-			this.select(ev);
-			this.compare(ev);
-		};
+    
+    onDeckClick = ev => {
+      this.select(ev);
+      this.compare(ev);
+    };
 
     render() {
-	  if(this.state.deck.length === 0) {
-		  return <Redirect push to='/end'/>
-	  }
+      let gameIsOver = this.state.deck.length === 0 ? true : false;
+      if(gameIsOver) {
+        return <Redirect push to='/end'/>
+      }
       return (
         <div>
           <Header count={this.state.count} restart={this.restart}/>
-          <CardList deck={this.state.deck} isOpen={this.state.isOpen} onClick={this.onDeckClick}/>
+          <CardList deck={this.state.deck} isOpen={this.state.isOpen} onClick={this.onDeckClick} 
+          flag={this.flag}/>
         </div>
       );
     }  
