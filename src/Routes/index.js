@@ -4,8 +4,6 @@ import StartPage from '../Pages/StartPage'
 import GamePage from '../Pages/GamePage'
 import EndPage from '../Pages/EndPage'
 
-//TODO: в pages css делать только позиционирование
-
 export default () => (
   <Router>
     <div>
