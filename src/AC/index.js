@@ -1,11 +1,14 @@
-export function win () {
-    return {
-      type: ROUND_WIN
-    }
+export function win (count, deck) {
+  return {
+    type: ROUND_WIN,
+    deck,
+    count
+  }
 }
 
-export function lose () {
+export function lose (count) {
 	return {
-		type: ROUND_LOSE
+    type: ROUND_LOSE,
+    count
 	}
 }

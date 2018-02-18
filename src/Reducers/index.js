@@ -4,9 +4,11 @@ let defaultState = {
   deck: Initializator.getDeck(),
   count: 0,
   isOpen: false,
-  selectedCards: [],
-  openedCardCards: [],
-  cardsInGame: [],
+  cards: {
+    selectedCards: [],
+    openedCards: [],
+    cardsInGame: [],
+  },
   flag: true
 }
 
@@ -22,5 +24,15 @@ export default function game(state = defaultState, action){
       flag: true
     };
   }
-  
+  switch(action.type) {
+    case 'CLICK':
+      return Object.assign({}, state, {
+        isOpen: !isOpen
+      })
+    case 'WIN_ROUND':
+      return Object.assign({}, state, {
+        
+      })
+    case 'LOSE_ROUND':
+  }
 }
