@@ -18,9 +18,11 @@ export default function game(state = defaultState, action){
       deck: Initializator.getDeck(),
       count: 0,
       isOpen: false,
-      selectedCards: [],
-      openedCardCards: [],
-      cardsInGame: [],
+      cards: {
+        selectedCards: [],
+        openedCards: [],
+        cardsInGame: [],
+      },
       flag: true
     };
   }
