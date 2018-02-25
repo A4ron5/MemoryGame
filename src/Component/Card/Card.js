@@ -33,7 +33,7 @@ class Card extends React.Component {
       onClick={this.flip} >
           <div className="card">
               <img src={`${image}`} alt='card'/>
-              <figure className="back"></figure>
+              <div className="back"></div>
           </div>
       </div>
     )
