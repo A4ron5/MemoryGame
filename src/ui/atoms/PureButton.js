@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const Button = styled.div`
+export const PureButton = styled.div`
   display: block;
   width: 290px;
   height: 80px;

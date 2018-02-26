@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const textButton = styled.p`
+export const TextButton = styled.p`
   font-size: 32px;
   line-height: 80px;
   text-align: center;

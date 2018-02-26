@@ -9,13 +9,21 @@ const CardContainer = styled.div`
   transform-style: preserve-3d;
   transition: transform 1s;
   user-select: none;
-  transform: ${props => props.flipped || rotateY(180)};
+  ${({ flipped }) => flipped && `
+    transform: rotateY(180deg);
+  `}
 `
 
 const Wrapper = styled.div``;
 
-export const Card = ({position, id, name, image}) => {
-  <CardContainer position={position} id={id} name={name}>
+export const Card = ({ position, id, name, image, flipped, onClick }) => {
+  <CardContainer 
+    data-position={position} 
+    data-id={id} 
+    data-name={name} 
+    flipped={flipped}
+    onClick={onClick}
+  >
     <Wrapper>
       <CardFront src={image}/>
       <CardBack/>

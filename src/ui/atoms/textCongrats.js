@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 
-export const textCongrats = styled.p`
-  //TODO: ИЗМЕНИТЬ FONT-SIZE
+export const TextCongrats = styled.p`
   font-size: 56px;
   text-align: center;
   color: #fff;
