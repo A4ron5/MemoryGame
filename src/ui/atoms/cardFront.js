@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const cardFront = styled.img`
+export const CardFront = styled.img`
   position: absolute;
   display: block;
   width: 100%;

@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const cardBack = styled.div`
+export const CardBack = styled.div`
   position: absolute;
   display: block;
   width: 100%;
