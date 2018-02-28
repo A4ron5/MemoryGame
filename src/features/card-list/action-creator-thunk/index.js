@@ -5,7 +5,11 @@ export const logic = (card, ) => (dispatch, getState) => {
     dispatch(select(card))
   }
   if(getState.selectedCards.length == 2) {
-    //TODO: Сделать selectedFlag ...
+
+    dispatch(flag(false));
+    setTimeout(() => {
+      dispatch(flag(true));
+    }, 800)
 
     let firstCard = getState.selectedCards[0];
     let secondCard = getState.selectedCards[1];
@@ -28,4 +32,11 @@ export const logic = (card, ) => (dispatch, getState) => {
         dispatch(clear)
     }
   }
+}
+
+const selectFlag = () => {
+  this.flag = false;
+  setTimeout(() => {
+    this.flag = true;
+  }, 800)
 }

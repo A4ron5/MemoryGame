@@ -1,5 +1,6 @@
 import React from 'react'
 import { CardListView, Card } from 'ui'
+
 class CardList extends React.Component {
 
   handleDeck = node => {
