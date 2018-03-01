@@ -1,0 +1,1 @@
+export { end } from './page'

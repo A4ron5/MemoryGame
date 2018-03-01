@@ -1,6 +1,6 @@
 import styled from 'styled-components'
-import {CardFront, CardBack} from '../atoms'
-import PropTypes from 'prop-types'
+import {CardFront} from '../atoms/CardFront'
+import {CardBack} from '../atoms/CardBack'
 
 const CardContainer = styled.div`
   width: 200px;
@@ -96,13 +96,4 @@ export const Card = ({ position, id, name, image, flipped, onClick }) => {
       <CardBack/>
     </Wrapper>
   </CardContainer>
-}
-
-Card.PropTypes = {
-  position: PropTypes.string,
-  id: PropTypes.string,
-  name: PropTypes.string,
-  image: PropTypes.string,
-  flipped: PropTypes.bool,
-  onClick: PropTypes.func
 }

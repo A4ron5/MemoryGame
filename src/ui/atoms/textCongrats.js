@@ -5,4 +5,5 @@ export const TextCongrats = styled.p`
   text-align: center;
   color: #fff;
   opacity: 0.9;
+  margin-bottom: 80px;
 `
