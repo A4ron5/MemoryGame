@@ -2,12 +2,12 @@ import styled from 'styled-components'
 import { PureButton, TextButton } from '../atoms'
 import PropTypes from 'prop-types'
 
-export const Button = ({text}) => {
+export const Button = ({name}) => {
   <PureButton>
-    <TextButton>{text}</TextButton>
+    <TextButton>{name}</TextButton>
   </PureButton>
 }
 
 Button.PropTypes = {
-  text: PropTypes.string
+  name: PropTypes.string
 }
