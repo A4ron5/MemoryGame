@@ -7,4 +7,5 @@ export const PureButton = styled.div`
   border-radius: 8px;
   background-color: #fff;
   opacity: 0.9;
+  margin: 0 auto;
 `
