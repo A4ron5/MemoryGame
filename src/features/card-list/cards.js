@@ -2,6 +2,7 @@ import React from 'react'
 import { CardListView } from '../../ui/atoms/card-list-view'
 import { Card } from '../../ui/molecules/Card'
 import { connect } from 'react-redux'
+import { Redirect } from 'react-router'
 import { win, lose, select, filter, clear, flag } from './action-creator'
 
 class CardList extends React.Component {
@@ -21,7 +22,7 @@ class CardList extends React.Component {
     this.props.dispatch(flag(false))
     setTimeout(() => {
       this.props.dispatch(flag(true))
-    }, 800)
+    }, 300)
   }
   
   compare = e => {
@@ -37,12 +38,12 @@ class CardList extends React.Component {
         this.cardFilter();
         setTimeout(() => {
           this.win();
-        },800)
+        },300)
         break;
         case loseRound:
         setTimeout(() => {
           this.lose();
-        },800)
+        },300)
         break;
         default:
         this.props.dispatch(clear());
@@ -68,7 +69,7 @@ class CardList extends React.Component {
     setTimeout(() => {
       let count = this.props.count + countPlus;
       this.props.dispatch(win(count, this.props.cardsInGame))
-    }, 800)
+    }, 300)
     this.props.dispatch(clear());
   };
   
@@ -78,11 +79,11 @@ class CardList extends React.Component {
       countMinus = countMinus - this.props.openedCards * 42;
       setTimeout(() => {
         this.props.dispatch(lose(countMinus))
-      }, 800);
+      }, 300);
     } else {
       setTimeout(() => {
         this.forceUpdate();
-      }, 800)
+      }, 300)
     }
     this.props.dispatch(clear());
   };
@@ -101,6 +102,10 @@ class CardList extends React.Component {
   };
 
   render(){
+    const isGameOver = this.props.deck.length === 0;
+    if(isGameOver) {
+      <Redirect to='/end' />
+    }
     const items = this.props.deck.map((item, index) => {
       const name = `${item.rank}${item.suit}`;
       return (
