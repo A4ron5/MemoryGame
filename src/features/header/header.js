@@ -3,12 +3,21 @@ import { HeaderView } from '../../ui/molecules/HeaderView'
 import { restart } from './action-creator'
 import { connect } from 'react-redux'
 
-const HeaderTemp = (props) => (
-  <HeaderView
-    //onClick={ props.dispatch(restart()) }
-    count={ props.count }
-  />
-)
+class HeaderTemp extends React.Component {
+
+  res = () => {
+    this.props.dispatch(restart())
+  }
+
+  render() {
+    return (
+      <HeaderView
+        onClick={ this.res }
+        count={ this.props.count }
+      />
+    )
+  }
+}
 
 const mapStateToProps = (state) => {
   return {
