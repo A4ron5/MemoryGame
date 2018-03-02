@@ -12,6 +12,7 @@ export const Routes = () => (
       <React.Fragment>
         <Route path='/' exact component={ start } />
         <Route path='/game' exact component={ game } />
+        <Route path='/end' exact component={ end } />
       </React.Fragment>
     </Router>
   </Provider>
