@@ -10,11 +10,11 @@ const Page = styled.div`
   margin-top: 90px;
 `
 
-export const StartPage = ({logo, title, name}) => (
+export const StartPage = ({logo, title, name, count}) => (
   <Page>
     <Container>
       <Logo src={logo} />
-      <TextName> {title} </TextName>
+      <TextName> {title} {count} </TextName>
       <Button name={name} />
     </Container>
   </Page>

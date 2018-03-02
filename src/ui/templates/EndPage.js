@@ -9,11 +9,12 @@ const Page = styled.div`
   margin-top: 70px;
 `
 
-export const EndPage = ({logo, text, name}) => (
+export const EndPage = ({logo, text, name, count}) => (
   <Page>
     <Container>
       <Logo src={logo} />
       <TextCongrats> {text} </TextCongrats>
+      <TextCongrats> {count} </TextCongrats>
       <Button name={name} />
     </Container>
   </Page>

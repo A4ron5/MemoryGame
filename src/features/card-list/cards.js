@@ -1,14 +1,10 @@
 import React from 'react'
-import { CardListView } from '../../ui/atoms/CardListView'
+import { CardListView } from '../../ui/atoms/card-list-view'
 import { Card } from '../../ui/molecules/Card'
 import { connect } from 'react-redux'
 import { win, lose, select, filter, clear, flag } from './action-creator'
 
 class CardList extends React.Component {
-
-  state = {
-    flipped: true
-  }
 
   select = e => {
     if(this.props.flag){

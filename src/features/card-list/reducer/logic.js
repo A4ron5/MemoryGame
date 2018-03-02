@@ -47,6 +47,11 @@ export function logic(state = initialState, action) {
         ...state,
         flag: action.flag
       }
+    case 'RESTART':
+      return {
+        ...state,
+        deck: action.deck
+      }
     default: 
       return state;
   }
