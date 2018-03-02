@@ -10,9 +10,9 @@ const animationTo = keyframes`
   100% { transform: rotateY(180deg) translateY(0px) }
 `
 const animationFrom = keyframes`
-  0% { transform: rotatetY(180deg) translateY(0px) }
+  0% { transform: rotateY(180deg) translateY(0px) }
   50% { transform: rotateY(90deg) translateY(-10px) }
-  100% { transform: rotateY(0deg) translateY(0px) }
+  100% { transform: none translateY(0px) }
 `
 
 const CardContainer = styled.div`
@@ -21,10 +21,19 @@ const CardContainer = styled.div`
   position: absolute;
   transform-style: preserve-3d;
   user-select: none;
-  ${({ flipped }) => flipped && `
+  ${({flipped}) => flipped ? 
+  `
     animation: ${animationTo} 0.4s linear;
     transform: rotateY(180deg);
-  `}
+  `
+    :
+  `
+    animation: ${animationFrom} 0.4s linear;
+    transform: none;
+  `
+
+  }
+
 
   &[data-position='0'] {
     right: 0;

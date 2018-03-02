@@ -10,4 +10,5 @@ export const TextName = styled.h1`
   opacity: 0.85;
   margin-bottom: 35px;
   margin-top: 0px;
+  user-select: none;
 `

@@ -22,13 +22,12 @@ class CardList extends React.Component {
     this.props.dispatch(flag(false))
     setTimeout(() => {
       this.props.dispatch(flag(true))
-    }, 300)
+    }, 500)
   }
   
   compare = e => {
     if (this.props.selectedCards.length === 2) {
       this.selectFlag();
-      console.log('fe')
       let firstCard = this.props.selectedCards[0];
       let secondCard = this.props.selectedCards[1];
       let winRound = firstCard.name === secondCard.name && firstCard.id !== secondCard.id;
@@ -36,14 +35,10 @@ class CardList extends React.Component {
       switch (true) {
         case winRound:
         this.cardFilter();
-        setTimeout(() => {
-          this.win();
-        },300)
+        this.win();
         break;
         case loseRound:
-        setTimeout(() => {
-          this.lose();
-        },300)
+        this.lose();
         break;
         default:
         this.props.dispatch(clear());
@@ -62,28 +57,27 @@ class CardList extends React.Component {
     this.props.dispatch(filter(cardsInGame))
   }
   
-  openedCards = 0;
   win = () => {
-    this.openedCards += 1;
     let countPlus = (this.props.cardsInGame.length / 2) * 42;
     setTimeout(() => {
       let count = this.props.count + countPlus;
-      this.props.dispatch(win(count, this.props.cardsInGame))
-    }, 300)
+      this.props.dispatch(win(count, this.props.cardsInGame, 1))
+    }, 500)
     this.props.dispatch(clear());
   };
   
   lose = () => {
+    console.log('adsd')
     let countMinus = this.props.count;
     if (countMinus > 0) {
-      countMinus = countMinus - this.props.openedCards * 42;
+      let count = countMinus - this.props.openedCards * 42;
       setTimeout(() => {
-        this.props.dispatch(lose(countMinus))
-      }, 300);
+        this.props.dispatch(lose(count))
+      }, 500);
     } else {
       setTimeout(() => {
         this.forceUpdate();
-      }, 300)
+      }, 500)
     }
     this.props.dispatch(clear());
   };

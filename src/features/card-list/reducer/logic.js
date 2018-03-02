@@ -15,7 +15,8 @@ export function logic(state = initialState, action) {
       return {
         ...state,
         deck: action.deck,
-        count: action.count
+        count: action.count,
+        openedCards: state.openedCards + 1
       }
     case 'ROUND_LOSE':
       return {

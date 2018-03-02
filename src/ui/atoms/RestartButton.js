@@ -8,4 +8,5 @@ export const RestartButton = styled.p`
   margin-right: auto;
   letter-spacing: 0.35px;
   opacity: 0.85;
+  user-select: none;
 `

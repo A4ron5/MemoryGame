@@ -7,4 +7,5 @@ export const TextCongrats = styled.p`
   color: #fff;
   opacity: 0.85;
   margin-bottom: 40px;
+  user-select: none;
 `

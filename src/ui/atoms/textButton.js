@@ -8,4 +8,5 @@ export const TextButton = styled.p`
   text-align: center;
   color: #1C7430;
   cursor: pointer;
+  user-select: none;
 `
