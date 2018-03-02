@@ -1,99 +1,124 @@
-import styled from 'styled-components'
-import {CardFront} from '../atoms/CardFront'
-import {CardBack} from '../atoms/CardBack'
+import React from 'react'
+import styled, { keyframes } from 'styled-components'
+import { CardFront } from '../atoms/CardFront'
+import { CardBack } from '../atoms/CardBack'
+import back from '../../Initialization/Data/Cards/back.jpg'
+
+const animationTo = keyframes`
+  0% { transform: rotateY(0deg) translateY(0px) }
+  50% { transform: rotateY(90deg) translateY(-10px) }
+  100% { transform: rotateY(180deg) translateY(0px) }
+`
+const animationFrom = keyframes`
+  0% { transform: rotatetY(180deg) translateY(0px) }
+  50% { transform: rotateY(90deg) translateY(-10px) }
+  100% { transform: rotateY(0deg) translateY(0px) }
+`
 
 const CardContainer = styled.div`
-  width: 200px;
-  height: 260px;
-  margin-bottom: 20px;
+  width: 100px;
+  height: 135px;
   position: absolute;
   transform-style: preserve-3d;
-  transition: transform 1s;
   user-select: none;
   ${({ flipped }) => flipped && `
+    animation: ${animationTo} 0.4s linear;
     transform: rotateY(180deg);
   `}
+
   &[data-position='0'] {
     right: 0;
   };
   &[data-position='1'] {
-    right: 240px;
+    right: 120px;
   };
   &[data-position='2'] {
-    right: 480px;
+    right: 240px;
   };
   &[data-position='3'] {
-    right: 720px;
+    right: 360px;
   };
   &[data-position='4'] {
-    right: 960px;
+    right: 480px;
   };
   &[data-position='5'] {
-    right: 1200px;
+    right: 600px;
   };
   &[data-position='6'] {
-    top: 300px;
+    top: 150px;
     right: 0;
   };
   &[data-position='7'] {
-    top: 300px;
-    right: 240px;
+    top: 150px;
+    right: 120px;
   };
   &[data-position='8'] {
-    top: 300px;
-    right: 480px;
+    top: 150px;
+    right: 240px;
   };
   &[data-position='9'] {
-    top: 300px;
-    right: 720px;
+    top: 150px;
+    right: 360px;
   };
   &[data-position='10'] {
-    top: 300px;
-    right: 960px;
+    top: 150px;
+    right: 480px;
   };
   &[data-position='11'] {
-    top: 300px;
-    right: 1200px;
+    top: 150px;
+    right: 600px;
   };
   &[data-position='12'] {
-    top: 600px;
+    top: 300px;
     right: 0px;
   };
   &[data-position='13'] {
-    top: 600px;
-    right: 240px;
+    top: 300px;
+    right: 120px;
   };
   &[data-position='14'] {
-    top: 600px;
-    right: 480px;
+    top: 300px;
+    right: 240px;
   };
   &[data-position='15'] {
-    top: 600px;
-    right: 720px;
+    top: 300px;
+    right: 360px;
   };
   &[data-position='16'] {
-    top: 600px;
-    right: 960px;
+    top: 300px;
+    right: 480px;
   };
   &[data-position='17'] {
-    top: 600px;
-    right: 1200px;
+    top: 300px;
+    right: 600px;
   };
 `
 
-const Wrapper = styled.div``;
+export class Card extends React.Component {
 
-export const Card = ({ position, id, name, image, flipped, onClick }) => {
-  <CardContainer 
-    data-position={position} 
-    data-id={id} 
-    data-name={name} 
-    flipped={flipped}
-    onClick={onClick}
-  >
-    <Wrapper>
-      <CardFront src={image}/>
-      <CardBack/>
-    </Wrapper>
-  </CardContainer>
+  state = {
+    flipped: false
+  }
+
+  onClick = () => {
+    this.setState({
+      flipped: !this.state.flipped
+    })
+  }
+
+  render() {
+    const {position, id, name, image} = this.props;
+    return (
+      <CardContainer 
+        data-position={position} 
+        data-id={id} 
+        data-name={name} 
+        onClick={this.onClick}
+        flipped={this.state.flipped}
+      >
+        <CardFront src={image} />
+        <CardBack src={back} />
+      </CardContainer>
+    )
+  }
 }

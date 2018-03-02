@@ -7,7 +7,7 @@ import {Container} from '../atoms/Container'
 import { Button } from '../molecules/Button'
 
 const Page = styled.div`
-  margin-top: 200px;
+  margin-top: 90px;
 `
 
 export const StartPage = ({logo, title, name}) => (

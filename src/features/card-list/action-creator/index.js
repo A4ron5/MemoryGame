@@ -9,13 +9,8 @@ export const lose = (count) => ({
   count
 })
 
-export const select = (card) => ({
+export const select = (selectedCards) => ({
   type: 'SELECT',
-  card
-})
-
-export const compare = (selectedCards) => ({
-  type: 'COMPARE',
   selectedCards
 })
 
@@ -25,7 +20,8 @@ export const filter = (cardsInGame) => ({
 })
 
 export const clear = () => ({
-  type: 'CLEAR'
+  type: 'CLEAR',
+  selectedCards: [] 
 })
 
 export const flag = (flag) => ({

@@ -2,10 +2,13 @@ import styled from 'styled-components'
 
 export const PureButton = styled.div`
   display: block;
-  width: 290px;
-  height: 80px;
-  border-radius: 8px;
+  width: 140px;
+  height: 40px;
+  border-radius: 4px;
   background-color: #fff;
-  opacity: 0.9;
+  opacity: 0.85;
   margin: 0 auto;
+  &:hover {
+    opacity: 1;
+  }
 `

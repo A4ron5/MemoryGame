@@ -1,5 +1,5 @@
 import styled from 'styled-components'
 
-export const CardList = styled.div`
+export const CardListView = styled.div`
   position: relative;
 `

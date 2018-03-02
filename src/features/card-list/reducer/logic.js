@@ -1,5 +1,15 @@
+import Initializator from '../../../Initialization/index'
 
-export function logic(state = defaultState, action) {
+const initialState = {
+  deck: new Initializator().getDeck(),
+  count: 0,
+  selectedCards: [],
+  openedCards: 0,
+  cardsInGame:[],
+  flag: true
+}
+
+export function logic(state = initialState, action) {
   switch(action.type) {
     case 'ROUND_WIN':
       return {
@@ -15,7 +25,7 @@ export function logic(state = defaultState, action) {
     case 'SELECT':
       return {
         ...state,
-        card: action.card
+        selectedCards: [...state.selectedCards, action.selectedCards]
       }
     case 'COMPARE':
       return {
@@ -29,7 +39,8 @@ export function logic(state = defaultState, action) {
       }
     case 'CLEAR':
       return {
-        //TODO: СДЕЛАТЬ clear
+        ...state,
+        selectedCards: action.selectedCards
       }
     case 'SELECT_FLAG':
       return {
