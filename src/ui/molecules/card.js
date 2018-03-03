@@ -105,27 +105,30 @@ const CardContainer = styled.div`
     right: 600px;
   };
 `
-
+//TODO: нужно фиксить анимацию
 export class CardTemp extends React.PureComponent {
 
   state = {
     flipped: this.props.flipped
   }
 
-  // componentWillReceiveProps(nextProps) {
-  //   if(nextProps.flipped !== this.state.flipped){
-  //     this.setState({
-  //       flipped: nextProps.flipped
-  //     })
-  //   }
-  // }
-
-  onClick = () => {
-    if(this.props.flag){
+  componentWillReceiveProps(nextProps) {
+    if(nextProps.flipped !== this.state.flipped){
       this.setState({
-        flipped: true
+        flipped: nextProps.flipped
       })
     }
+  }
+
+  onClick = () => {
+    // if(this.props.flag){
+    //   this.setState({
+    //     flipped: true
+    //   })
+    // }
+    this.setState({
+      flipped: true
+    })
   }
 
   render() {
@@ -138,8 +141,8 @@ export class CardTemp extends React.PureComponent {
         onClick={this.onClick}
         flipped={this.state.flipped}
       >
-        <CardFront src={image} />
-        <CardBack src={backimg} />
+        <CardFront src={image} data-tid="Card" />
+        <CardBack src={backimg} data-tid="Card-flipped" />
       </CardContainer>
     )
   }

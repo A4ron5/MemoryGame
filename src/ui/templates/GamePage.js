@@ -7,7 +7,7 @@ const Page = styled.div`
 `
 
 export const GamePage = ({children}) => (
-  <Page>
+  <Page data-tid="Deck">
     <Container>
       {children}
     </Container>

@@ -4,7 +4,7 @@ import { Cards } from './cards'
 import { Header } from './header'
 
 export const game = () => (
-  <GamePage>
+  <GamePage data-tid="Deck">
     <Header/>
     <Cards/>
   </GamePage>

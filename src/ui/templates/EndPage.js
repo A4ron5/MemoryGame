@@ -15,7 +15,7 @@ export const EndPage = ({logo, text, name, count}) => (
       <Logo src={logo} />
       <Text> {text} </Text>
       <Text> {count} </Text>
-      <Button name={name} />
+      <Button name={name} data-tid="EndGame-retryGame"/>
     </Container>
   </Page>
 )

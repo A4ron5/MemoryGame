@@ -51,7 +51,7 @@ class CardList extends React.Component {
         this.win();
         break;
         case loseRound:
-        //this.props.dispatch(click(false))
+        this.props.dispatch(click(false))
         this.lose();
         break;
         default:
@@ -83,7 +83,6 @@ class CardList extends React.Component {
   lose = () => {
     let countMinus = this.props.count;
     if (countMinus > 0) {
-      this.setState({flipped: false})
       let count = countMinus - this.props.openedCards * 42;
       setTimeout(() => {
         this.props.dispatch(lose(count))
