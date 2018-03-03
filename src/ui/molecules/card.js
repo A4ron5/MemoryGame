@@ -1,8 +1,9 @@
 import React from 'react'
 import styled, { keyframes } from 'styled-components'
-import { CardFront } from '../atoms/CardFront'
-import { CardBack } from '../atoms/CardBack'
-import back from '../../Initialization/Data/Cards/back.jpg'
+import { CardFront } from '../atoms/front'
+import { CardBack } from '../atoms/back'
+import { connect } from 'react-redux'
+import backimg from '../../Initialization/Data/Cards/back.jpg'
 
 const animationTo = keyframes`
   0% { transform: rotateY(0deg) translateY(0px) }
@@ -31,7 +32,9 @@ const CardContainer = styled.div`
     animation: ${animationFrom} 0.4s linear;
     transform: none;
   `
-
+  }
+  &:hover {
+    box-shadow: 0 10px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
   }
 
 
@@ -103,16 +106,26 @@ const CardContainer = styled.div`
   };
 `
 
-export class Card extends React.Component {
+export class CardTemp extends React.PureComponent {
 
   state = {
-    flipped: false
+    flipped: this.props.flipped
   }
 
+  // componentWillReceiveProps(nextProps) {
+  //   if(nextProps.flipped !== this.state.flipped){
+  //     this.setState({
+  //       flipped: nextProps.flipped
+  //     })
+  //   }
+  // }
+
   onClick = () => {
-    this.setState({
-      flipped: !this.state.flipped
-    })
+    if(this.props.flag){
+      this.setState({
+        flipped: true
+      })
+    }
   }
 
   render() {
@@ -126,8 +139,15 @@ export class Card extends React.Component {
         flipped={this.state.flipped}
       >
         <CardFront src={image} />
-        <CardBack src={back} />
+        <CardBack src={backimg} />
       </CardContainer>
     )
   }
 }
+
+const mapStateToProps = (state) => ({
+  flipped: state.flipped,
+  flag: state.flag
+})
+
+export const Card = connect(mapStateToProps)(CardTemp)

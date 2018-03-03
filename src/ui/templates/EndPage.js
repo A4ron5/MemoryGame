@@ -1,9 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Logo } from '../atoms/Logo'
-import { TextCongrats } from '../atoms/TextCongrats'
-import { Container } from '../atoms/Container'
-import { Button } from '../molecules/Button'
+import { Logo } from '../atoms/logo'
+import { Text } from '../atoms/text'
+import { Container } from '../atoms/container'
+import { Button } from '../molecules/button'
 
 const Page = styled.div`
   margin-top: 70px;
@@ -13,8 +13,8 @@ export const EndPage = ({logo, text, name, count}) => (
   <Page>
     <Container>
       <Logo src={logo} />
-      <TextCongrats> {text} </TextCongrats>
-      <TextCongrats> {count} </TextCongrats>
+      <Text> {text} </Text>
+      <Text> {count} </Text>
       <Button name={name} />
     </Container>
   </Page>

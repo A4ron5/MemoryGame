@@ -1,18 +1,15 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Container } from '../atoms/Container'
-import { Cards } from '../../features/card-list/cards'
-import { Header } from '../../features/header/header'
+import { Container } from '../atoms/container'
 
 const Page = styled.div`
   position: relative;
 `
 
-export const GamePage = () => (
+export const GamePage = ({children}) => (
   <Page>
     <Container>
-      <Header/>
-      <Cards/>
+      {children}
     </Container>
   </Page>
 )

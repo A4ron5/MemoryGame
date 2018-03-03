@@ -9,4 +9,7 @@ export const RestartButton = styled.p`
   letter-spacing: 0.35px;
   opacity: 0.85;
   user-select: none;
+  &:hover {
+    opacity: 1;
+  }
 `

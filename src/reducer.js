@@ -1,4 +1,4 @@
-import Initializator from '../../../Initialization/index'
+import Initializator from './Initialization/index'
 
 const initialState = {
   deck: new Initializator().getDeck(),
@@ -6,7 +6,8 @@ const initialState = {
   selectedCards: [],
   openedCards: 0,
   cardsInGame:[],
-  flag: true
+  flag: true,
+  flipped: false
 }
 
 export function logic(state = initialState, action) {
@@ -51,7 +52,13 @@ export function logic(state = initialState, action) {
     case 'RESTART':
       return {
         ...state,
-        deck: action.deck
+        deck: action.deck,
+        count: action.count
+      }
+    case 'CLICK':
+      return {
+        ...state,
+        flipped: action.flipped
       }
     default: 
       return state;

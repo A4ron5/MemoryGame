@@ -1,6 +1,6 @@
 import React from 'react'
 import { HeaderView } from '../../ui/molecules/HeaderView'
-import { restart } from './action-creator'
+import { restart } from '../../ac'
 import { connect } from 'react-redux'
 
 class HeaderTemp extends React.Component {

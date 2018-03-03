@@ -1,10 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
-//import { Logo, TextName, Container} from '../atoms'
-import {Logo} from '../atoms/Logo'
-import {TextName} from '../atoms/TextName'
-import {Container} from '../atoms/Container'
-import { Button } from '../molecules/Button'
+import { Logo } from '../atoms/logo'
+import { Title } from '../atoms/title'
+import { Container } from '../atoms/container'
+import { Button } from '../molecules/button'
 
 const Page = styled.div`
   margin-top: 90px;
@@ -14,7 +13,7 @@ export const StartPage = ({logo, title, name, count}) => (
   <Page>
     <Container>
       <Logo src={logo} />
-      <TextName> {title} {count} </TextName>
+      <Title> {title} {count} </Title>
       <Button name={name} />
     </Container>
   </Page>

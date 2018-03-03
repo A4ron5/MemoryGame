@@ -2,12 +2,12 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  background-color: #1b692d;
+  color: #fff;
+  font-size: 26px;
 }
 p{
   padding: 0;
   margin: 0;
 }
-.container{
-  width: 1400px;
-  margin: 0 auto;
-}
+
