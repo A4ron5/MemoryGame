@@ -3,6 +3,7 @@ import styled, { keyframes } from 'styled-components'
 import { CardFront } from '../atoms/front'
 import { CardBack } from '../atoms/back'
 import { connect } from 'react-redux'
+import { click } from '../../ac'
 import backimg from '../../Initialization/Data/Cards/back.jpg'
 
 const animationTo = keyframes`
@@ -105,19 +106,25 @@ const CardContainer = styled.div`
     right: 600px;
   };
 `
-//TODO: нужно фиксить анимацию
-export class CardTemp extends React.PureComponent {
+export class CardTemp extends React.Component {
 
   state = {
     flipped: this.props.flipped
   }
 
+  flashok = false;
+  
   componentWillReceiveProps(nextProps) {
-    if(nextProps.flipped !== this.state.flipped){
-      this.setState({
-        flipped: nextProps.flipped
-      })
+    this.magic(nextProps)
+  }
+
+  magic = (props) => {
+    if(this.flashok && props.flipped !== this.state.flipped){
+      this.setState({flipped: props.flipped});
+      this.flashok = false
+      return true;
     }
+    this.flashok = true;
   }
 
   onClick = () => {

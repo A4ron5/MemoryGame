@@ -35,11 +35,12 @@ class CardList extends React.Component {
     this.props.dispatch(flag(false))
     setTimeout(() => {
       this.props.dispatch(flag(true))
-    }, 500)
+    }, 300)
   }
   
   compare = () => {
-    if (this.props.selectedCards.length === 2) {
+    let isTwoCards = this.props.selectedCards.length === 2;
+    if (isTwoCards) {
       this.selectFlag();
       let firstCard = this.props.selectedCards[0];
       let secondCard = this.props.selectedCards[1];
@@ -51,7 +52,6 @@ class CardList extends React.Component {
         this.win();
         break;
         case loseRound:
-        this.props.dispatch(click(false))
         this.lose();
         break;
         default:
@@ -87,13 +87,11 @@ class CardList extends React.Component {
       setTimeout(() => {
         this.props.dispatch(lose(count))
       }, 500);
-    } else {
-      // setTimeout(() => {
-      //   this.forceUpdate();
-      // }, 500)
     }
+    //this.props.dispatch(click(false))
     this.props.dispatch(clear());
   };
+  
   
   handleDeck = node => {
     this.node = node;
@@ -111,7 +109,7 @@ class CardList extends React.Component {
   render(){
     const isGameOver = this.props.deck.length === 0;
     if(isGameOver) {
-      <Redirect to={{pathname: '/end'}} push/>
+      //TODO: Redirict
     }
     const items = this.props.deck.map((item, index) => {
       const name = `${item.rank}${item.suit}`;
