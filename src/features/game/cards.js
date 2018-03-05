@@ -3,21 +3,23 @@ import { CardListView } from '../../ui/atoms/card-list-view'
 import { Card } from './card'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
-import { win, lose, select, filter, clear, flag, click } from '../../ac'
+import { select, compare } from '../../ac'
+
+/**
+ * В этом коде проблема с ре-рендером. Происходит он из за того, что
+ * когда диспачатся action'ы, они меняют данные в сторе, соответсвенно
+ * mapStateToProps постоянно получает новые данные и ре-рендерит компонент.
+ * Нужно вынести все диспачи из этого кода либо в thunk, либо еще куда-то.
+ * По этой же причине анимация переворта карты в card.js не работает корректно, поскольку
+ * при каждом клике в этом компоненте диспачится action и меняет данные в сторе. Соответсвенно
+ * также в card.js mapStateToProps обновляется посятонно и ре-рендерится. Не хватило времени её 
+ * решить. UPDATE: Частично решил проблему, вынес логику в ac.js, теперь ре-рендоров нету.
+ */
 
 class CardList extends React.Component {
 
-  componentWillMount(){
-    // setTimeout(() => {
-    //   this.props.dispatch(click(true))
-    // }, 1000)
-    // setTimeout(() => {
-    //   this.props.dispatch(click(false))
-    // }, 2000)
-  }
-
   select = e => {
-    if(this.props.flag){
+    if(true){
       if (e.target.parentElement) {
         this.props.dispatch(select({
           name: e.target.parentElement.getAttribute("data-name"),
@@ -26,68 +28,6 @@ class CardList extends React.Component {
       }
     }
   };
-  
-  selectFlag = () => {
-    this.props.dispatch(flag(false))
-    setTimeout(() => {
-      this.props.dispatch(flag(true))
-    }, 300)
-  }
-  
-  compare = () => {
-    let isTwoCards = this.props.selectedCards.length === 2;
-    if (isTwoCards) {
-      this.selectFlag();
-      let firstCard = this.props.selectedCards[0];
-      let secondCard = this.props.selectedCards[1];
-      let winRound = firstCard.name === secondCard.name && firstCard.id !== secondCard.id;
-      let loseRound = firstCard.name !== secondCard.name;
-      switch (true) {
-        case winRound:
-        this.cardFilter();
-        this.win();
-        break;
-        case loseRound:
-        this.lose();
-        break;
-        default:
-        this.props.dispatch(clear());
-      }
-    }
-  };
-  
-  cardFilter = () => {
-    let cardsInGame = this.props.deck.filter(item => {
-      let cardName = `${item.rank}${item.suit}`;
-      return (
-        cardName !== this.props.selectedCards[0].name &&
-        cardName !== this.props.selectedCards[1].name
-      );
-    });
-    this.props.dispatch(filter(cardsInGame))
-  }
-  
-  win = () => {
-    let countPlus = (this.props.cardsInGame.length / 2) * 42;
-    setTimeout(() => {
-      let count = this.props.count + countPlus;
-      this.props.dispatch(win(count, this.props.cardsInGame, 1))
-    }, 500)
-    this.props.dispatch(clear());
-  };
-  
-  lose = () => {
-    let countMinus = this.props.count;
-    if (countMinus > 0) {
-      let count = countMinus - this.props.openedCards * 42;
-      setTimeout(() => {
-        this.props.dispatch(lose(count))
-      }, 500);
-    }
-    //this.props.dispatch(click(false))
-    this.props.dispatch(clear());
-  };
-  
   
   toEndPage = () => {
     this.props.history.replace('/end')
@@ -99,12 +39,6 @@ class CardList extends React.Component {
 
   componentDidMount(){
     this.node.addEventListener("click", this.onClick);
-    setTimeout(() => {
-      this.props.dispatch(click(false))
-    }, 3000)
-    setTimeout(() => {
-      this.props.dispatch(click(true))
-    }, 6000)
   }
 
   componentWillUnmount(){
@@ -113,7 +47,8 @@ class CardList extends React.Component {
 
   onClick = ev => {
     this.select(ev);
-    this.compare();
+    this.props.dispatch(compare());
+    this.forceUpdate()
   };
 
   render(){
@@ -141,17 +76,9 @@ class CardList extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    deck: state.deck,
-    count: state.count,
-    selectedCards: state.selectedCards,
-    openedCards: state.openedCards,
-    cardsInGame: state.cardsInGame,
-    flag: state.flag,
-    flipped: state.flipped
-  }
-}
+const mapStateToProps = (state) => ({
+  deck: state.deck  
+})
 
 export const Cards = withRouter(connect(mapStateToProps)(CardList));
 

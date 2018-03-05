@@ -3,38 +3,25 @@ import { CardFront } from '../../ui/atoms/front'
 import { CardBack } from '../../ui/atoms/back'
 import { CardContainer } from '../../ui/molecules/Card'
 import { connect } from 'react-redux'
-import { click } from '../../ac'
 import backimg from '../../Initialization/Data/Cards/back.jpg'
 
-class CardTemp extends React.Component {
+class CardTemp extends React.PureComponent {
 
 		state = {
 			flipped: this.props.flipped
 		}
-	
-		flashok = false;
 		
 		componentWillReceiveProps(nextProps) {
-			this.magic(nextProps)
-		}
-	
-		magic = (props) => {
-			if(this.flashok && props.flipped !== this.state.flipped){
-				this.setState({flipped: props.flipped});
-				this.flashok = false
-				return true;
+			if(this.props.flag){
+				setTimeout(() => {
+					this.setState({flipped: nextProps.flipped})
+				}, 500)
 			}
-			this.flashok = true;
 		}
 	
 		onClick = () => {
-			// if(this.props.flag){
-			//   this.setState({
-			//     flipped: true
-			//   })
-			// }
 			this.setState({
-				flipped: true
+				flipped: false
 			})
 		}
 	

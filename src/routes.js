@@ -8,7 +8,7 @@ import { game } from './features/game'
 import { end } from './features/end'
 
 export const history = createHistory({
-  initialEntries: ['/end']
+  initialEntries: ['/']
 });
 
 export const Routes = () => (
