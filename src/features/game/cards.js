@@ -2,7 +2,7 @@ import React from 'react'
 import { CardListView } from '../../ui/atoms/card-list-view'
 import { Card } from '../../ui/molecules/Card'
 import { connect } from 'react-redux'
-import { Redirect, withRouter } from 'react-router'
+import { withRouter } from 'react-router'
 import { win, lose, select, filter, clear, flag, click } from '../../ac'
 
 class CardList extends React.Component {
@@ -93,12 +93,20 @@ class CardList extends React.Component {
   };
   
   
+  toEndPage = () => {
+    this.props.history.replace('/end')
+  }
+
   handleDeck = node => {
     this.node = node;
   }
 
   componentDidMount(){
     this.node.addEventListener("click", this.onClick);
+  }
+
+  componentWillUnmount(){
+    this.node.removeEventListener("click", this.onClick);
   }
 
   onClick = ev => {
@@ -109,7 +117,7 @@ class CardList extends React.Component {
   render(){
     const isGameOver = this.props.deck.length === 0;
     if(isGameOver) {
-      //TODO: Redirict
+      this.toEndPage();
     }
     const items = this.props.deck.map((item, index) => {
       const name = `${item.rank}${item.suit}`;
@@ -123,7 +131,6 @@ class CardList extends React.Component {
         /> 
       )
     })
-    
     return (
       <CardListView innerRef={this.handleDeck}>
         {items}

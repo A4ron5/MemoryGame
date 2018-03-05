@@ -3,11 +3,11 @@ import { EndPage } from '../../ui/templates/EndPage'
 import { connect } from 'react-redux'
 import logo from './EndGame.png'
 
-const endTemp = (props) => (
+const endTemp = ({count}) => (
   <EndPage 
     logo={logo}
     text='Поздравляем! Ваш итоговый счет:'
-    count={props.count}
+    count={count}
     name='Еще раз'
   />
 )
