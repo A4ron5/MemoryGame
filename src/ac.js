@@ -106,3 +106,12 @@ const roundLose = (dispatch, getState) => {
   dispatch(click(true))
   dispatch(clear());
 };
+
+export const openClose = () => (dispatch) => {
+  setTimeout(() => {
+    dispatch(click(false))
+  },30)
+  setTimeout(() => {
+    dispatch(click(true))
+  },5000)
+}

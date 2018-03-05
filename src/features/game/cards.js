@@ -3,18 +3,7 @@ import { CardListView } from '../../ui/atoms/card-list-view'
 import { Card } from './card'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
-import { select, compare } from '../../ac'
-
-/**
- * В этом коде проблема с ре-рендером. Происходит он из за того, что
- * когда диспачатся action'ы, они меняют данные в сторе, соответсвенно
- * mapStateToProps постоянно получает новые данные и ре-рендерит компонент.
- * Нужно вынести все диспачи из этого кода либо в thunk, либо еще куда-то.
- * По этой же причине анимация переворта карты в card.js не работает корректно, поскольку
- * при каждом клике в этом компоненте диспачится action и меняет данные в сторе. Соответсвенно
- * также в card.js mapStateToProps обновляется посятонно и ре-рендерится. Не хватило времени её 
- * решить. UPDATE: Частично решил проблему, вынес логику в ac.js, теперь ре-рендоров нету.
- */
+import { select, compare, openClose } from '../../ac'
 
 class CardList extends React.Component {
 
@@ -39,6 +28,7 @@ class CardList extends React.Component {
 
   componentDidMount(){
     this.node.addEventListener("click", this.onClick);
+    this.props.dispatch(openClose())
   }
 
   componentWillUnmount(){
