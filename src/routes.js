@@ -2,14 +2,13 @@ import React from 'react'
 import { Router, Route } from 'react-router-dom';
 import { Provider } from 'react-redux'
 import createHistory from 'history/createMemoryHistory'
-
 import { store } from './store'
 import { start } from './features/start'
 import { game } from './features/game'
 import { end } from './features/end'
 
 export const history = createHistory({
-  initialEntries: ['/']
+  initialEntries: ['/end']
 });
 
 export const Routes = () => (

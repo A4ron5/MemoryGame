@@ -6,6 +6,6 @@ export const Text = styled.p`
   font-weight: 700;
   color: #fff;
   opacity: 0.85;
-  margin-bottom: 40px;
+  margin-bottom: ${({margin}) => margin && `40px;` }
   user-select: none;
 `

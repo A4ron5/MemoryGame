@@ -1,15 +1,11 @@
 import React from 'react'
 import { CardListView } from '../../ui/atoms/card-list-view'
-import { Card } from '../../ui/molecules/Card'
+import { Card } from './card'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
 import { win, lose, select, filter, clear, flag, click } from '../../ac'
 
 class CardList extends React.Component {
-
-
-  //TODO: подумать над переносом логики в Card
-
 
   componentWillMount(){
     // setTimeout(() => {
@@ -103,6 +99,12 @@ class CardList extends React.Component {
 
   componentDidMount(){
     this.node.addEventListener("click", this.onClick);
+    setTimeout(() => {
+      this.props.dispatch(click(false))
+    }, 3000)
+    setTimeout(() => {
+      this.props.dispatch(click(true))
+    }, 6000)
   }
 
   componentWillUnmount(){

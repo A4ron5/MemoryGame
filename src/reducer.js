@@ -7,7 +7,7 @@ const initialState = {
   openedCards: 0,
   cardsInGame:[],
   flag: true,
-  flipped: false
+  flipped: true
 }
 
 export function logic(state = initialState, action) {

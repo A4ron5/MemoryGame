@@ -5,17 +5,18 @@ import { Text } from '../atoms/text'
 import { Container } from '../atoms/container'
 import { Button } from '../molecules/button'
 import { withRouter } from 'react-router'
+import { TextCongrats } from '../atoms/TextCongrats';
 
 const Page = styled.div`
   margin-top: 70px;
 `
 
-const EndPageTemp = ({logo, text, name, count, history}) => (
+const EndPageTemp = ({logo, text, name, count, history, textCongr}) => (
   <Page>
     <Container>
       <Logo src={logo} />
-      <Text> {text} </Text>
-      <Text> {count} </Text>
+      <TextCongrats> {text} </TextCongrats>
+      <Text margin> {textCongr} {count} </Text> 
       <Button 
         name={name} 
         onClick={() => { history.replace('/game') }} 

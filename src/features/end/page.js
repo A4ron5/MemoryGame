@@ -6,7 +6,8 @@ import logo from './EndGame.png'
 const endTemp = ({count}) => (
   <EndPage 
     logo={logo}
-    text='Поздравляем! Ваш итоговый счет:'
+    text='Поздравляем!'
+    textCongr='Ваш итоговый счет:'
     count={count}
     name='Еще раз'
   />
