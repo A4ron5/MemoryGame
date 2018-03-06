@@ -1,12 +1,13 @@
 import React from 'react'
 import { HeaderView } from '../../ui/molecules/HeaderView'
-import { restart, openClose } from '../../ac'
+import { restart, openClose, click } from '../../ac'
 import { connect } from 'react-redux'
 
 class HeaderTemp extends React.Component {
 
   res = () => {
     this.props.dispatch(restart())
+    this.props.dispatch(click(false))
     this.props.dispatch(openClose());
   }
 

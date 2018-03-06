@@ -8,13 +8,11 @@ import { select, compare, openClose } from '../../ac'
 class CardList extends React.Component {
 
   select = e => {
-    if(true){
-      if (e.target.parentElement) {
-        this.props.dispatch(select({
-          name: e.target.parentElement.getAttribute("data-name"),
-          id: e.target.parentElement.getAttribute("data-id")
-        }))
-      }
+    if (e.target.parentElement) {
+      this.props.dispatch(select({
+        name: e.target.parentElement.getAttribute("data-name"),
+        id: e.target.parentElement.getAttribute("data-id")
+      }))
     }
   };
   
@@ -67,7 +65,8 @@ class CardList extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-  deck: state.deck  
+  deck: state.deck,
+  flipped: state.flipped 
 })
 
 export const Cards = withRouter(connect(mapStateToProps)(CardList));
